@@ -36,6 +36,9 @@ spec:
           env:
             - name: EPUB_DATA_DIR
               value: /data
+          envFrom:
+            - secretRef:
+                name: epub-anki-settings
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
@@ -72,7 +75,15 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /data
+            - name: hermes-ssh
+              mountPath: /var/run/hermes-ssh
+              readOnly: true
       volumes:
         - name: data
           persistentVolumeClaim:
             claimName: epub-reader-data
+        - name: hermes-ssh
+          secret:
+            secretName: epub-hermes-ssh
+            # Root-owned, group-readable for the pod's fsGroup 1000.
+            defaultMode: 288
