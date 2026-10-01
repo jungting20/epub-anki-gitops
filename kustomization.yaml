@@ -9,4 +9,4 @@ resources:
 images:
 - name: epub-reader
   newName: ghcr.io/jungting20/epub-anki-web-app
-  digest: sha256:3c1aeb98401633f549ffabcdc4319979d63ea560f95bf3ebbcc42fc63ffb5e0b
+  digest: sha256:8e289b95ff0874284b8497dd17682d04a77980b4b3a21e842e054da2eb2027d4
